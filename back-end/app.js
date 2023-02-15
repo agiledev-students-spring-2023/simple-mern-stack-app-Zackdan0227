@@ -21,6 +21,7 @@ mongoose
 // load the dataabase models we want to deal with
 const { Message } = require('./models/Message')
 const { User } = require('./models/User')
+const { About } = require('./models/AboutUs')
 
 // a route to handle fetching all messages
 app.get('/messages', async (req, res) => {
@@ -39,7 +40,19 @@ app.get('/messages', async (req, res) => {
     })
   }
 })
+app.get('/about',  async(req, res) => {
+  // const aboutData = await About.create({
+  //   bio: 'Hi my name is Kedan. I am a junior majoring in Computer Science and minor in Game Design and Graphics Design. My top three artists of the month are: Travis Scott, Drake, Daniel Caesar.',
+  //   image: 'https://lh6.googleusercontent.com/P3vsOWdy3JPYSTzjjKl7R4WNg2P4c1Gag0qrwCwLVr5EGiLNq0RewDmV_XzoAANWY2g=w2400',
+  // })
+  // return res.json(aboutData)
+  const aboutData = {
+    bio: 'Hi my name is Kedan. I am a junior majoring in Computer Science and minor in Game Design and Graphics Design. My top three artists of the month are: Travis Scott, Drake, Daniel Caesar.',
+    image: 'https://im2.ezgif.com/tmp/ezgif-2-6852ade128.png',
+  }
 
+  res.json(aboutData)
+})
 // a route to handle fetching a single message by its id
 app.get('/messages/:messageId', async (req, res) => {
   // load all messages from database
